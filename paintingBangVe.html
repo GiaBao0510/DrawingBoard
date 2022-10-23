@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8"/>
+        <meta name="bang ve" content="painting"/>
+        <meta name="author" content="GiaBao"/>
+        <title>Painting</title>
+        <link rel="icon" href="logopainting.jpg">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
+        <style>
+            *{
+                box-sizing: border-box;
+                margin: 0;
+                padding: 0;
+            }
+            body{
+                background-color: lightslategray;
+            }
+            .BangMauSac{
+                border: 2px solid black;
+                background-color: slategrey;
+            }
+            .maudo,.maucam,.mauvang,.mauxanhla,.mauxanhduong,.mauden,.mautrang,.mautim{
+                width: 14px;
+                height: 14px;
+            }
+            .maudo{background-color: red;}
+            .maucam{background-color: orangered;}
+            .mauvang{background-color: yellow;}
+            .mauxanhla{background-color: green;}
+            .mauxanhduong{background-color: blue;}
+            .mauden{background-color: black;}
+            .mautrang{background-color: white;}
+            .mautim{background-color: blueviolet;}
+            .mauSac:hover{
+                opacity: 0.7;
+            }
+            .mauSac:active{
+                box-shadow: -3px -3px -3px gray;
+            }
+            .ThanhCongCu{
+                width: 100%;
+                height: auto;
+                display: grid;
+                grid-template-areas: "DIV1 DIV1 DIV2 DIV3 DIV3";
+                background-color: lightslategray; 
+            }
+            #canvas{
+                width: 100%;
+                height: 91vh;
+                background-color: white;
+            }
+            .phanMauSac{
+                grid-area: 'DIV1';
+                margin-left: 150px;
+            }
+            .butve{
+                grid-area: 'DIV2';
+            }
+            .BangCongCu{
+                margin-top: 8px;
+            }
+            .nutDuLieu{
+                margin-top: 10px;
+                grid-area: 'DIV3';
+                position: relative;
+                right: 30%;
+            }
+            .congcu{
+                margin: 4px;
+                border: 2px solid mediumblue;
+                border-radius: 8px;
+                color: darkblue;
+                background-color: deepskyblue;
+                box-shadow: 3px 3px 5px black;
+            }
+            .congcu:hover{
+                color: crimson;
+                background-color: yellow;
+                border: 2px solid red;
+            }
+            .congcu:active{
+                color: black;
+                background-color: antiquewhite;
+                border: 2px solid black;
+                padding: 3px;
+            }
+            .nutBam{
+                margin: 3px;
+                padding: 1px;
+                color: black;
+                font-size: larger;
+                font-weight: 300;
+                font-family: "Raleway",sans-serif;
+                background-color: silver;
+                border: 1px solid black;
+                border-radius: 5px;
+                box-shadow: 3px 3px 6px black;
+                position: relative;
+                animation: dichuyen 5s;
+            }
+            @keyframes dichuyen{
+                0%{left:150%}
+                100%{left:0%}
+            }
+            .nutBam:hover{
+                color: white;
+                background-color: dimgray;
+                border: 2px solid black;
+            }
+            .nutBam:active{
+                color: white;
+                background-color:cornflowerblue;
+                border: 2px solid darkblue;
+            }
+        </style>
+        <script src="painting.js" async></script>
+    </head>
+    <body>
+        <div class="ThanhCongCu">
+            <div class="phanMauSac">
+                <table class="BangMauSac">
+                    <tr>
+                        <td><button onclick="maudo()" class="maudo mauSac"></button></td>
+                        <td><button  onclick="maucam()" class="maucam mauSac"></button></td>
+                        <td><button onclick="mauvang()" class="mauvang mauSac"></button></td>
+                        <td><button onclick="mauxanhla()" class="mauxanhla mauSac"></button></td>
+                        <td><b style="text-align: center;">Tùy chọn:</b></td>
+                    </tr>
+                    <tr>
+                        <td><button onclick="mauxanhduong()" class="mauxanhduong mauSac"></button></td>
+                        <td><button onclick="mauden()" class="mauden mauSac"></button></td>
+                        <td><button onclick="mautrang()" class="mautrang mauSac"></button></td>
+                        <td><button onclick="mautim()" class="mautim mauSac"></button></td>
+<!--onchange Sự kiện thay đổi xảy ra khi giá trị của một phần tử đã được thay đổi. Đối với các nút radio và hộp kiểm, sự kiện thay đổi xảy ra khi trạng thái đã chọn đã được thay đổi.-->
+                        <td>&nbsp;<input type="color" name="doimau" id="tuyChonMau" onchange="mautuychon()"/></td>
+                    </tr>
+                </table>
+            </div>
+            <div class="butVe">
+                <table class="BangCongCu">
+                    <tr>
+                        <td>
+                            <input onclick="butthuong()" type="radio" name="loaibut" id="butThuong" checked/>
+                            <label onclick="butthuong()" for="butThuong"  title="Bút thường"><i class="fa-solid fa-pen congcu"></i></label>
+                        </td>
+                        <td>
+                            <input onclick="butchi()" type="radio" name="loaibut" id="butChi"/>
+                            <label onclick="butchi()" for="butChi"  title="Bút chì"><i class="fa-solid fa-pencil congcu"></i></label>
+                        </td>
+                        <td>
+                            <input onclick="butbi()" type="radio" name="loaibut" id="butBi" />
+                            <label onclick="butbi()" for="butBi"  title="Bút Bi"><i class="fa-solid fa-pen-clip congcu"></i></label>
+                        </td>
+                        <td>
+                            <input onclick="butmuc()" type="radio" name="loaibut" id="butMuc" />
+                            <label onclick="butmuc()" for="butMuc" title="Bút Mực"><i class="fa-solid fa-pen-fancy congcu"></i></label>
+                        </td>
+                        <td>
+                            <input onclick="butke()" type="radio" name="loaibut" id="butKe" />
+                            <label onclick="butke()" for="butKe" title="Bút Kẻ"><i class="fa-solid fa-pen-nib congcu"></i></label>
+                        </td>
+                        <td>
+                            <input onchange="cucgom()" type="range" min="1" max="50" id="cucGom" name="cucgom"/>
+                            <i  onchange="cucgom()" class="fa-solid fa-eraser congcu" title="Cục gơm"></i>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+            <div class="nutDuLieu">
+                <button class="nutBam" >Save</button>
+                <button class="nutBam" onclick="reset()">Reset</button>
+            </div>
+        </div>
+        <canvas id="canvas"></canvas>
+    </body>
+</html>
